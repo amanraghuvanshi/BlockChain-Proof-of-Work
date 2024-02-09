@@ -4,6 +4,11 @@ type Block struct {
 }
 
 type Book struct {
+	ID            string `json:"id"`
+	Title         string `json:"title"`
+	Author        string `json:"author"`
+	PublishedDate string `json:"published_data"`
+	ISBN          string `json:"ISBN"`
 }
 
 type BookCheckout struct {
