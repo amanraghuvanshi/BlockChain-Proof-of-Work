@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/amanraghuvanshi/golang-blockchain/controllers"
 	"github.com/amanraghuvanshi/golang-blockchain/models"
 	"github.com/gorilla/mux"
 )
@@ -16,9 +17,9 @@ func main() {
 	// Get you chain
 	r.HandleFunc("/", getTheChain).Methods("GET")
 	// second route
-	r.HandleFunc("/", writeBlock).Methods("POST")
+	r.HandleFunc("/", controllers.WriteBlock()).Methods("POST")
 	// the first route
-	r.HandleFunc("/", controllers.newBook()).Methods("POST")
+	r.HandleFunc("/new", controllers.NewBook()).Methods("POST")
 
 	//confirmation
 	log.Println("Listening at port 3000")
