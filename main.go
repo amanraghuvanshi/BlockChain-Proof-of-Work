@@ -4,8 +4,11 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/amanraghuvanshi/golang-blockchain/models"
 	"github.com/gorilla/mux"
 )
+
+var BlockChain *models.BlockChain
 
 func main() {
 	// router
