@@ -26,4 +26,15 @@ func newBook(w http.ResponseWriter, r http.Request) {
 	h := md5.New()
 	io.WriteString(h, book.ISBN+book.PublishedDate)
 	book.ID = fmt.Sprintf("%x", h.Sum(nil))
+
+	resp, err := json.MarshalIndent(book, "", " ")
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		log.Printf("Couldnt Marshall payload: %v", err)
+		w.Write([]byte("Couldnt save the book"))
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	w.Write(resp)
 }

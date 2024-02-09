@@ -18,7 +18,7 @@ func main() {
 	// second route
 	r.HandleFunc("/", writeBlock).Methods("POST")
 	// the first route
-	r.HandleFunc("/", newBook).Methods("POST")
+	r.HandleFunc("/", controllers.newBook()).Methods("POST")
 
 	//confirmation
 	log.Println("Listening at port 3000")
