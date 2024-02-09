@@ -11,6 +11,16 @@ import (
 
 var BlockChain *models.BlockChain
 
+func (bc *BlockChain) AddBlock(data models.BookCheckout) {
+	prevBlock := bc.block[len(bc.block)-1]
+	// creation of block
+	block := controllers.CreateBlock(prevBlock, data)
+	//check the validity
+	if validBlock(block, prevBlock) {
+		bc.block = append(bc.block, block)
+	}
+}
+
 func main() {
 	// router
 	r := mux.NewRouter()
