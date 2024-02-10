@@ -10,7 +10,7 @@ import (
 	"github.com/amanraghuvanshi/golang-blockchain/models"
 )
 
-func (b *models.Block) generateHash() {
+func (b *models.Block) GenerateHash() {
 	bytes, _ := json.Marshal(b.Data)
 	data := string(b.Position) + b.TimeStamp + string(bytes) + b.PrevHash
 
@@ -26,7 +26,7 @@ func CreateBlock(prevBlock *models.Block, checkoutItem models.BookCheckout) *mod
 	block.PrevHash = prevBlock.Hash
 
 	// generation of hash
-	block.generateHash()
+	block.GenerateHash()
 
 	return block
 }
